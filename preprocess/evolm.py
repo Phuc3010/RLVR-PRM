@@ -6,7 +6,8 @@ def make_map_fn(split):
     def process_fn(example, idx):
         question = example.pop("problem")
         # question = f"Human: {question_raw}\nAssistant:"
-        solution = example.pop("qwen_7B_solution")
+        question = question + "\nPlease reason step by step, and put your final answer within \\boxed{{}}."
+        # solution = example.pop("qwen_7B_solution")
         answer = example.pop("gt_answer")
         data = {
             "data_source": "math",

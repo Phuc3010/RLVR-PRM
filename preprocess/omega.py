@@ -9,6 +9,7 @@ def make_map_fn(split):
         messages = example.pop("messages")
         question = messages[0]['content'].replace("\n\nPresent the answer in LaTex format: \\boxed{Your answer}", "")
         # question = f"Human: {question_raw}\nAssistant:"
+        question = question + "\nPlease reason step by step, and put your final answer within \\boxed{{}}."
         answer = example.pop("ground_truth")
         data = {
             "data_source": "omega-math",
